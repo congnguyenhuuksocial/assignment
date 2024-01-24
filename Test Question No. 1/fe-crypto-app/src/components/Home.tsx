@@ -36,7 +36,7 @@ const HomePage: React.FC = () => {
   const [ohlcData, setOhlcData] = useState({ open: 0, high: 0, low: 0, close: 0 });
 
   useEffect(() => {
-    axios.get('https://api.coingecko.com/api/v3/search/trending')
+    axios.get('http://localhost:3000/api/v1/coins/trending')
       .then((response) => {
         setCoinData(response.data.coins);
         console.log(response.data.coins);
@@ -48,7 +48,7 @@ const HomePage: React.FC = () => {
   useEffect(() => {
     if (selectedCoin) {
       console.log("select coin: ", selectedCoin);
-      axios.get(`https://api.coingecko.com/api/v3/coins/${selectedCoin}`)
+      axios.get(`http://localhost:3000/api/v1/coins/${selectedCoin}`)
         .then((response) => {
           console.log("response data: ", response.data.market_data.current_price);
 
@@ -76,7 +76,7 @@ const HomePage: React.FC = () => {
     const fetchPriceData = async () => {
       try {
         const response = await axios.get(
-          `https://api.coingecko.com/api/v3/coins/${selectedCoin}/market_chart`, {
+          `http://localhost:3000/api/v1/coins/${selectedCoin}/market_chart`, {
             params: { vs_currency: 'usd', days: selectedRange },
           }
         );

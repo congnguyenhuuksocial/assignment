@@ -52,3 +52,6 @@ In the core/ directory, implement your business logic that is independent of the
 
 11. Dockerize (Optional)
     For containerization, create a Dockerfile and optionally a docker-compose.yml file.
+## Frontend Code structure
+
+## 

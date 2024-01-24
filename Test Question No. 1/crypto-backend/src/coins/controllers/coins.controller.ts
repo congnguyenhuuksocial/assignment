@@ -1,12 +1,12 @@
-import { Controller, Get, Query, HttpException, HttpStatus } from '@nestjs/common';
+import { Controller, Get, Query, HttpException, HttpStatus, Param } from '@nestjs/common';
 import { CoinsService } from '../services/coins.service';
 
-@Controller({ path: 'coins' , version: '1' })
+@Controller('coins')
 export class CoinsController {
     constructor(private readonly coinsService: CoinsService) {}
 
-    @Get()
-    async getCoinData(@Query('id') coinId: string) {
+    @Get('/:id')
+    async getCoinData(@Param('id') coinId: string) {
         console.log(coinId);
         if (!coinId) {
             throw new HttpException('Bad Request', HttpStatus.BAD_REQUEST);
@@ -19,8 +19,8 @@ export class CoinsController {
         return this.coinsService.fetchTrendingCoins();
     }
 
-    @Get('/market-chart')
-    async getMarketChart(@Query('id') coinId: string, @Query('days') days: number) {
+    @Get('/:id/market-chart')
+    async getMarketChart(@Param('id') coinId: string, @Query('days') days: number) {
         if (!coinId || !days) {
             throw new HttpException('Bad Request', HttpStatus.BAD_REQUEST);
         }

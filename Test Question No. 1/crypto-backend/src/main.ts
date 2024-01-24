@@ -10,8 +10,8 @@ async function bootstrap() {
 
   // enable versioning v1, v2, etc.
   app.enableVersioning({
-    type: VersioningType.URI
-
+    type: VersioningType.URI,
+    defaultVersion: '1'
   });
 
   // enable Swagginger

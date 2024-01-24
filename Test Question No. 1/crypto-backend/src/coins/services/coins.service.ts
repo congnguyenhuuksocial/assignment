@@ -1,4 +1,4 @@
-import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { firstValueFrom } from 'rxjs';
 
@@ -13,8 +13,7 @@ export class CoinsService {
      */
     async fetchCoinData(coinId: string) {
         try {
-            const response = await firstValueFrom(this.httpService.get(`https://api.coingecko.com/api/v3/coins/${coinId}`));
-            return response.data;
+            return await firstValueFrom(this.httpService.get(`https://api.coingecko.com/api/v3/coins/${coinId}`));
         } catch (error) {
             throw new HttpException('Coin not found', HttpStatus.NOT_FOUND);
         }
@@ -26,8 +25,7 @@ export class CoinsService {
      */
     async fetchTrendingCoins() {
         try {
-            const response = await firstValueFrom(this.httpService.get('https://api.coingecko.com/api/v3/search/trending'));
-            return response.data.coins;
+            return await firstValueFrom(this.httpService.get('https://api.coingecko.com/api/v3/search/trending'));
         } catch (error) {
             throw new HttpException('Failed to fetch trending coins', HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -41,8 +39,7 @@ export class CoinsService {
      */
     async fetchMarketChart(coinId: string, days: number) {
         try {
-            const response = await firstValueFrom(this.httpService.get(`https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=usd&days=${days}`));
-            return response.data;
+            return await firstValueFrom(this.httpService.get(`https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=usd&days=${days}`));
         } catch (error) {
             throw new HttpException('Failed to fetch market chart', HttpStatus.INTERNAL_SERVER_ERROR);
         }
