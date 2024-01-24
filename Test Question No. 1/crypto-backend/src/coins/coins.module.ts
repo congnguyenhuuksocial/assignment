@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { CoinsService } from './coins.service';
-import { CoinsController } from './coins.controller';
+import { CoinsService } from './services/coins.service';
+import { CoinsController } from './controllers/coins.controller';
 import { HttpModule } from '@nestjs/axios';
 
 @Module({
