@@ -1,0 +1,18 @@
+{
+  "name": "test-question-no.-2",
+  "description": "To run this TypeScript code, you need to have TypeScript installed in your environment. You can compile the TypeScript code to JavaScript using the TypeScript compiler (tsc) and then run the resulting JavaScript code with Node.js. Here's how you can do it: 1. Install TypeScript globally (if you haven't already): ``` npm install -g typescript ``` 1. Save the TypeScript code to a file, for example, calculateMaxProfit.ts. 2. Compile the TypeScript code to JavaScript: ``` tsc calculateMaxProfit.ts ``` 3. Run the JavaScript code: ``` node calculateMaxProfit.js ``` ## Analysis Time Complexity and Space Complexity ### Time Complexity Time complexity refers to the amount of time an algorithm takes to complete as a function of the length of the input. It's often expressed using Big O notation, which provides an upper bound on the time requirements and is useful for describing the worst-case scenario.",
+  "version": "1.0.0",
+  "main": "calculateMaxProfit.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/calculateMaxProfit.js",
+    "test": "npm run build && npm run start"
+  },
+  "keywords": [],
+  "author": "Nguyen Thanh Cong",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.11.5",
+    "typescript": "^5.3.3"
+  }
+}
